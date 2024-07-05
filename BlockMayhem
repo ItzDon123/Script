@@ -15,7 +15,7 @@ end
 local function questChecker()
     while true do
         checkAllQuests()
-        wait(5) -- Wait for 1 second
+        wait(1) -- Wait for 1 second
     end
 end
 
@@ -78,7 +78,7 @@ local function interactWithParts()
                 fireclickdetector(v.ClickDetector)
             end
         end
-        wait(0.8) -- Wait for 0.8 seconds
+        wait(5) -- Wait for 5 seconds
     end
 end
 
