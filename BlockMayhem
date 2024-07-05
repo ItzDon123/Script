@@ -1,4 +1,4 @@
--- AUTO PICKUP
+--AUTO PICKUP
 local allowedPartNames = {
     "Nuetron", "ChromaticOdyssey", "Cyberspace", "Cosmic", "ChromaticHypergiant", "ChromaticAquavortex", "EVIL", 
     "ChromaticEruption", "Sovereign", "ChromaticBluescreen", "ChromaticSyntax", "ChromaticLunar", "InvertedWither", 
@@ -56,5 +56,5 @@ while true do
             fireclickdetector(v.ClickDetector)
         end
     end
-    wait(5)  -- Adjust the wait time as per your requirement
+    wait(5)
 end
