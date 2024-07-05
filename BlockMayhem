@@ -1,24 +1,3 @@
-local quests = {"Quest1", "Quest2", "Quest3", "Quest4"}
-
-local replicatedStorage = game:GetService("ReplicatedStorage")
-local noxStuffButReplicatedStorage = replicatedStorage:WaitForChild("NoxStuffButReplicatedStorage")
-local events = noxStuffButReplicatedStorage:WaitForChild("Events")
-local checkQuests = events:WaitForChild("CheckQuests")
-
-local function checkAllQuests()
-    for _, questName in ipairs(quests) do
-        local args = {questName}
-        checkQuests:FireServer(unpack(args))
-    end
-end
-
-local function questChecker()
-    while true do
-        checkAllQuests()
-        wait(1) -- Wait for 1 second
-    end
-end
-
 --AUTO PICKUP
 local allowedPartNames = {
     "Nuetron", "ChromaticOdyssey", "Cyberspace", "Cosmic", "ChromaticHypergiant", "ChromaticAquavortex", "EVIL", 
@@ -71,17 +50,11 @@ local allowedPartNames = {
     "ChromaticDecay", "ChromaticAbyssal"
 }
 
-local function interactWithParts()
-    while true do
-        for _, v in pairs(game:GetDescendants()) do
-            if v:IsA("Part") and table.find(allowedPartNames, v.Name) and v:FindFirstChild("ClickDetector") then
-                fireclickdetector(v.ClickDetector)
-            end
+while true do
+    for _, v in pairs(game:GetDescendants()) do
+        if v:IsA("Part") and table.find(allowedPartNames, v.Name) and v:FindFirstChild("ClickDetector") then
+            fireclickdetector(v.ClickDetector)
         end
-        wait(5) -- Wait for 5 seconds
     end
+    wait(5)
 end
-
--- Start both scripts concurrently using coroutines
-coroutine.wrap(questChecker)()
-coroutine.wrap(interactWithParts)()
