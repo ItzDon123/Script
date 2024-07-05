@@ -58,27 +58,3 @@ while true do
     end
     wait(5)
 end
-
--- AUTO QUEST
-local function fireQuestRemote(questName)
-    local args = {
-        [1] = questName
-    }
-
-    game:GetService("ReplicatedStorage"):WaitForChild("NoxStuffButReplicatedStorage"):WaitForChild("Events"):WaitForChild("CheckQuests"):FireServer(unpack(args))
-end
-
-local quests = {"Quest1", "Quest2", "Quest3", "Quest4"}
-
-local function questClaimLoop()
-    while true do
-        for _, questName in ipairs(quests) do
-            fireQuestRemote(questName)
-            wait(1)  -- Adjust the wait time as per your requirement between each remote call
-        end
-    end
-end
-
--- COROUTINE
-coroutine.wrap(questClaimLoop)()
-coroutine.wrap(interactWithParts)()
