@@ -1,0 +1,59 @@
+local allowedPartNames = {
+    "Nuetron", "ChromaticOdyssey", "Cyberspace", "Cosmic", "ChromaticHypergiant", "ChromaticAquavortex", "EVIL", 
+    "ChromaticEruption", "Sovereign", "ChromaticBluescreen", "ChromaticSyntax", "ChromaticLunar", "InvertedWither", 
+    "Prismatic", "Digital", "Guardian", "ChromaticTROLL", "InvertedValor", "InvertedBinary", "ChromaticHaunt", "Decay", 
+    "Eternal", "InvertedAquavortex", "ChromaticImperial", "Glacier", "InvertedPolar", "ChromaticCyberspace", 
+    "ChromaticBlizzard", "InvertedFrost", "InvertedTemporal", "Astral", "ChromaticMillionaire", "ChromaticEthereal", 
+    "Tesseract", "InvertedEternal", "ChromaticSanctum", "Shade", "InvertedNuetron", "InvertedSpectral", "Immortal", 
+    "Ethereal", "Bluescreen", "ChromaticEntropy", "InvertedOmnipotent", "gnarpgnarpgod", "Fool", "InvertedGuardian", 
+    "InvertedArcane", "InvertedCelestial", "ChromaticCelestial", "Purity", "InvertedAbyssal", "Dread", 
+    "InvertedMillionaire", "Common", "InvertedDesolation", "InvertedNebula", "BILLIONAIRE", "ChromaticSeraphic", 
+    "Depth", "bo", "ChromaticEmpyrean", "ChromaticSovereign", "Valor", "Serene", "Hypergiant", "InvertedPrimordial", 
+    "Toxic", "ChromaticAether", "ChromaticAstral", "InvertedTROLL", "InvertedAndromeda", "Invertedmyblock", "Solitude", 
+    "Desolation", "Beyond", "InvertedAstral", "InvertedBeyond", "truebo", "ChromaticElysian", "Entropy", "Rare", 
+    "Frost", "ChromaticTesseract", "InvertedElysian", "InvertedBlossom", "InvertedSovereign", "Apotheosis", 
+    "InvertedFirewall", "revenge", "Epic", "gnarp", "Content", "InvertedEntropy", "ChromaticGlisten", "awesome", 
+    "Chromaticgnarp", "Divine", "InvertedFate", "ChromaticEclipsed", "ChromaticGuardian", "InvertedSoundspace", 
+    "Dusk", "Abyssal", "Imperial", "Temporal", "InvertedSanctum", "InvertedLucid", "InvertedSyntax", "Firework", 
+    "InvertedParagon", "ChromaticSoundspace", "InvertedHaunt", "InvertedVaporwave", "Hailstorm", "Destiny", "Blossom", 
+    "Polar", "ChromaticFlare", "Odyssey", "Demonic", "ChromaticPrimordial", "ChromaticsevenCRYSTAL", "InvertedNova", 
+    "InvertedLeviathan", "InvertedFrostbite", "ChromaticApotheosis", "Spectral", "ChromaticEternal", "ChromaticNuetron", 
+    "Crystalize", "Inferno", "Syntax", "Aurora", "InvertedRunic", "ChromaticDread", "Omnipotent", "ChromaticDesolation", 
+    "ChromaticInvertedCommon", "InvertedImperial", "Mythical", "myblock", "ChromaticForsaken", "Pure", "ChromaticArcane", 
+    "ChromaticDivine", "InvertedPhantom", "ChromaticLeviathan", "InvertedSerene", "TROLL", "InvertedAurora", 
+    "ChromaticFrostbite", "ultimategnarp", "ChromaticTemporal", "Glisten", "Andromeda", "Haunt", "InvertedBlaze", 
+    "InvertedSolitude", "ChromaticCosmic", "InvertedBluescreen", "TheRARESTblock", "ChromaticPhantom", "InvertedboCRYSTAL", 
+    "ChromaticRunic", "ChromaticAurora", "Primordial", "InvertedUndefined", "Legendary", "ChromaticIridescence", 
+    "InvertedDestiny", "ExoticDiamond", "ChromaticVaporwave", "Millionaire", "ChromaticWither", "ChromaticSerene", 
+    "Loudiathan", "sevenCRYSTAL", "ChromaticLucid", "InvertedCyberspace", "Frostbite", "InvertedStellar", "InvertedPurity", 
+    "Binary", "Aquavortex", "Prototype", "Sanctum", "Iridescence", "InvertedApotheosis", "ChromaticDigital", 
+    "InvertedPyro", "InvertedImmortal", "ChromaticDepth", "Vaporwave", "ChromaticNebula", "InvertedDigital", "Ascendant", 
+    "ChromaticPyro", "ChromaticChronos", "Eclipsed", "Encryption", "Phantom", "ChromaticCrystalize", "InvertedInferno", 
+    "Icy", "Blaze", "InvertedLunar", "InvertedDecay", "InvertedsevenCRYSTAL", "Stellar", "ChromaticBinary", 
+    "InvertedDread", "ChromaticDemonic", "InvertedCosmic", "ChromaticGlacier", "ChromaticFirewall", "ChromaticFrost", 
+    "ChromaticValor", "InvertedBlizzard", "Uncommon", "scrap", "ChromaticStellar", "InvertedCommon", "ChromaticOmnipotent", 
+    "InvertedPrototype", "test", "InvertedTesseract", "TidalWave", "ChromaticEuphoria", "InvertedGlacier", "Paragon", 
+    "Flare", "ChromaticBlaze", "InvertedAscendant", "Seraphic", "ChromaticBeyond", "Lovestruck", "ChromaticImmortal", 
+    "Blizzard", "Forsaken", "InvertedDemonic", "Aqua", "ChromaticSolitude", "InvertedTidalWave", "ChromaticDestiny", 
+    "Godly", "Diamond", "orb", "ChromaticToxic", "ChromaticTheRARESTblock", "InvertedEthereal", "Aether", "Nebula", 
+    "ChromaticSpectral", "Life", "InvertedChronos", "InvertedGentleman", "Euphoria", "InvertedToxic", 
+    "InvertedInvertedCommon", "InvertedEncryption", "Chromaticmyblock", "Pyro", "gnarpgnarp", "ChromaticBlossom", 
+    "InvertedDivine", "InvertedDepth", "Magma", "Shine", "InvertedOdyssey", "ChromaticFate", "ChromaticEncryption", 
+    "Arcane", "Eruption", "Elysian", "ChromaticTerminus", "Harvest", "InvertedCrystalize", "Undefined", "ChromaticParagon", 
+    "InvertedFlare", "Nova", "InvertedEclipsed", "InvertedIridescence", "Empyrean", "Gentleman", "Firewall", "boCRYSTAL", 
+    "ChromaticPrototype", "ChromaticPolar", "Lucid", "InvertedEuphoria", "Chronos", "InvertedAether", "ChromaticGentleman", 
+    "ChromaticUndefined", "Terminus", "Bit", "InvertedEruption", "InvertedTheRARESTblock", "ChromaticTidalWave", 
+    "ChromaticNova", "ChromaticAndromeda", "Invertedgnarp", "InvertedSeraphic", "ChromaticInferno", "InvertedTerminus", 
+    "Lunar", "InvertedGlisten", "ChromaticAscendant", "Wither", "nil", "ChromaticboCRYSTAL", "InvertedForsaken", 
+    "InvertedEmpyrean", "Runic", "Soundspace", "Celestial", "Fate", "ChromaticPurity", "InvertedHypergiant", "Leviathan", 
+    "ChromaticDecay", "ChromaticAbyssal"
+}
+
+while true do
+    for _, v in pairs(game:GetDescendants()) do
+        if v:IsA("Part") and table.find(allowedPartNames, v.Name) and v:FindFirstChild("ClickDetector") then
+            fireclickdetector(v.ClickDetector)
+        end
+    end
+    wait(0.8)
+end
