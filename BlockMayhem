@@ -71,11 +71,17 @@ local allowedPartNames = {
     "ChromaticDecay", "ChromaticAbyssal"
 }
 
-while true do
-    for _, v in pairs(game:GetDescendants()) do
-        if v:IsA("Part") and table.find(allowedPartNames, v.Name) and v:FindFirstChild("ClickDetector") then
-            fireclickdetector(v.ClickDetector)
+local function interactWithParts()
+    while true do
+        for _, v in pairs(game:GetDescendants()) do
+            if v:IsA("Part") and table.find(allowedPartNames, v.Name) and v:FindFirstChild("ClickDetector") then
+                fireclickdetector(v.ClickDetector)
+            end
         end
+        wait(0.8) -- Wait for 0.8 seconds
     end
-    wait(5)
 end
+
+-- Start both scripts concurrently using coroutines
+coroutine.wrap(questChecker)()
+coroutine.wrap(interactWithParts)()
