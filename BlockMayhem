@@ -15,7 +15,7 @@ end
 local function questChecker()
     while true do
         checkAllQuests()
-        wait(1) -- Wait for 1 second
+        wait(5) -- Wait for 1 second
     end
 end
 
