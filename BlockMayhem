@@ -1,3 +1,24 @@
+local quests = {"Quest1", "Quest2", "Quest3", "Quest4"}
+
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local noxStuffButReplicatedStorage = replicatedStorage:WaitForChild("NoxStuffButReplicatedStorage")
+local events = noxStuffButReplicatedStorage:WaitForChild("Events")
+local checkQuests = events:WaitForChild("CheckQuests")
+
+local function checkAllQuests()
+    for _, questName in ipairs(quests) do
+        local args = {questName}
+        checkQuests:FireServer(unpack(args))
+    end
+end
+
+local function questChecker()
+    while true do
+        checkAllQuests()
+        wait(1) -- Wait for 1 second
+    end
+end
+
 --AUTO PICKUP
 local allowedPartNames = {
     "Nuetron", "ChromaticOdyssey", "Cyberspace", "Cosmic", "ChromaticHypergiant", "ChromaticAquavortex", "EVIL", 
