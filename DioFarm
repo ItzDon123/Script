@@ -68,3 +68,8 @@ local function attackAndSpawn()
         task.wait(1.5)
     end
 end
+
+task.spawn(cleanEffects)
+task.spawn(findDioTarget)
+task.spawn(moveToDio)
+task.spawn(attackAndSpawn)
